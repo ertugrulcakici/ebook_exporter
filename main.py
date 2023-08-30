@@ -32,8 +32,8 @@ class app:
         self.data = {}
 
     def runAsync(self):
-        self.listener = mouse.Listener(on_click=self.on_click)
-        self.listener.start()
+        with mouse.Listener(on_click=self.on_click) as listener:
+            listener.join()
 
     def startProcessing(self):
         path = "Images/"+str(self.pageCount)+".jpeg"
